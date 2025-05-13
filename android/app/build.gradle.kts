@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.vs_paze_tech"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "25.1.8937393"  // Using a specific NDK version that we know is installed
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
