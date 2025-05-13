@@ -6,9 +6,9 @@ plugins {
 }
 
 android {
-    namespace = "com.example.vs_paze_tech"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = "25.1.8937393"  // Using a specific NDK version that we know is installed
+    namespace = "com.example.vspaze"
+    compileSdk = 34
+    ndkVersion = "25.1.8937393"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -21,13 +21,13 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.vs_paze_tech"
+        applicationId = "com.example.vspaze"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
+        minSdk = 21
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0"
     }
 
     buildTypes {

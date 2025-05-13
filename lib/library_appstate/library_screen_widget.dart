@@ -133,8 +133,9 @@ class _LibraryScreenState extends State<LibraryScreen> {
               children: [
                 SizedBox(height: screenHeight * 0.08),
                 // Carousel Banner
-                FlutterCarousel(
-                  items: carouselImages.map((image) {
+                FlutterCarousel.builder(
+                  itemCount: carouselImages.length,
+                  itemBuilder: (context, index, realIndex) {
                     return Container(
                       margin: const EdgeInsets.symmetric(horizontal: 5),
                       decoration: BoxDecoration(
@@ -150,14 +151,14 @@ class _LibraryScreenState extends State<LibraryScreen> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Image.asset(
-                          image,
+                          carouselImages[index],
                           fit: BoxFit.cover,
                           width: double.infinity,
                         ),
                       ),
                     );
-                  }).toList(),
-                  options: CarouselOptions(
+                  },
+                  options: FlutterCarouselOptions(
                     height: 150,
                     viewportFraction: 0.9,
                     showIndicator: false,

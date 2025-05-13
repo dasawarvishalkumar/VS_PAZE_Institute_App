@@ -1,4 +1,4 @@
-name: vs_paze_tech
+name: vspaze
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.7.2
+  sdk: '>=3.3.0 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -35,17 +35,17 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   http: ^1.4.0
-  flutter_carousel_widget: ^2.2.0
+  flutter_carousel_widget: ^3.1.0
   smooth_page_indicator: ^1.1.0
   chewie: ^1.7.5
   video_player: ^2.8.2
-  youtube_player_flutter: ^8.1.2
+  youtube_player_flutter: ^9.1.1
   curved_navigation_bar: ^1.0.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.13.1
+  flutter_launcher_icons: ^0.14.3
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
