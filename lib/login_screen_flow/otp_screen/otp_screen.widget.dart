@@ -151,17 +151,17 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
     );
 
     if (result['success']) {
-      _showSuccessDialog();
-    } else {
+        _showSuccessDialog();
+      } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(result['message'])),
       );
     }
 
-    if (mounted) {
-      setState(() {
-        _isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
     }
   }
 

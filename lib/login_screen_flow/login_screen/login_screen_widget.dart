@@ -15,35 +15,37 @@ class LoginScreen extends StatelessWidget {
  @override
 Widget build(BuildContext context) {
   return Scaffold(
-    body: AnimatedContainer(
-      duration: Duration(seconds: 5),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            ColorTween(
-              begin: Color(0xFF86E0EA),
-              end: Color(0xFFE0C3FC),
-            ).lerp((DateTime.now().second % 10) / 10)!,
-            ColorTween(
-              begin: Color(0xFFE0C3FC),
-              end: Color(0xFF86E0EA),
-            ).lerp((DateTime.now().second % 10) / 10)!,
-          ],
-        ),
-      ),
-      child: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildLogo(),
-              _buildLoginForm(),
-            ],
+    body: TweenAnimationBuilder(
+      duration: const Duration(seconds: 10),
+      tween: Tween<double>(begin: 0, end: 2 * 3.14159),
+      builder: (context, double value, child) {
+        return Container(
+          decoration: BoxDecoration(
+            gradient: SweepGradient(
+              center: Alignment.center,
+              startAngle: value,
+              endAngle: value + 2 * 3.14159,
+              colors: [
+                const Color(0xFF86E0EA),
+                const Color(0xFFE0C3FC),
+                const Color(0xFF86E0EA),
+              ],
+              stops: const [0.0, 0.5, 1.0],
+            ),
           ),
-        ),
-      ),
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _buildLogo(),
+                  _buildLoginForm(),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     ),
   );
 }
@@ -198,19 +200,47 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   Widget _buildLoginButton() {
-    return ElevatedButton(
-      onPressed: _handleLogin,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: const Color.fromARGB(255, 246, 189, 34),
-        shape: RoundedRectangleBorder(
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              const Color.fromARGB(255, 246, 189, 34),
+              const Color.fromARGB(255, 255, 215, 0),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
           borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: const Color.fromARGB(255, 246, 189, 34).withOpacity(0.3),
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+            ),
+          ],
         ),
-      ),
-      child: const Padding(
-        padding: EdgeInsets.symmetric(vertical: 12),
-        child: Text(
-          'Login',
-          style: TextStyle(fontSize: 16, color: Colors.black87),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: _handleLogin,
+            borderRadius: BorderRadius.circular(12),
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              child: const Center(
+                child: Text(
+                  'Login',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ),
         ),
       ),
     );
